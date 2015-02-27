@@ -1,0 +1,194 @@
+#info_tab{display: none}
+.clear{clear:both}
+.fixaddon{padding: 0px 13px;cursor: pointer}
+.nextstep{margin-left: 8px; display: none}
+img.ui-datepicker-trigger{display: none}
+.fixradio{margin-top: 0px !important}
+.labelradio{cursor: pointer}
+.labelradio .fa-spinner{font-size:20px; display:none}
+.fr{float:right}
+.fixtrash{ color:#FF0600; font-size: 20px}
+@media (min-width: 768px)
+{
+	.form-inline .form-control.fixlogo {width: 400px}
+	/* .form-inline .form-control.fixlogo{width: 100%} */
+}
+@media (min-width: 768px ) AND (max-width: 880px )
+{
+	.form-inline .fixprimary{
+		width: 100%;
+		margin-top: 10px;
+	}
+	.form-inline .form-group.fixgroup{width:100%}
+}
+@media (max-width: 768px)
+{
+	.form-inline .fixgroup{margin-right: 0}
+	.form-inline .fixprimary{
+		width: 100%;
+		/* margin-top: 10px; */
+	}
+	#tab-general ul.glt-upload-step li:nth-child(1){
+		width: 100%;
+		float:none;
+	}
+	#tab-general ul.glt-upload-step li:nth-child(2){
+		display: none;
+	}
+	#tab-general ul.glt-upload-step li:nth-child(3){
+		width: 100%;
+		display: none;
+	}
+	
+	#tab-image ul.glt-upload-step li:nth-child(1){
+		display: none;
+	}
+	#tab-image ul.glt-upload-step li:nth-child(2){
+		width: 100%;
+		float:none;
+	}
+	#tab-image ul.glt-upload-step li:nth-child(3){
+		width: 100%;
+		display: none;
+	}
+	
+	#tab-info-image ul.glt-upload-step li:nth-child(1){
+		display: none;
+	}
+	#tab-info-image ul.glt-upload-step li:nth-child(2){
+		display: none;
+	}
+	#tab-info-image ul.glt-upload-step li:nth-child(3){
+		width: 100%;
+		float:none;
+	}
+	
+}
+.control input.form-control, .control select.form-control{
+	margin-top: 6px;
+}
+.containers{
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+/* .tab-content {
+	padding-top: 20px;
+} */
+.nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
+color: #999;
+}
+.nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
+color: #777777;
+text-decoration: none;
+background-color: transparent;
+cursor: not-allowed;
+}
+.nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
+color: #777777;
+text-decoration: none;
+background-color: transparent;
+cursor: not-allowed;
+}
+
+.nav-tabs > li > a:hover {
+border-color: #eee #eee #ddd;
+}
+.close:hover, .close:focus {
+	color: #000000;
+	text-decoration: none;
+	cursor: pointer;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+button.close {
+	padding: 0;
+	cursor: pointer;
+	background: transparent;
+	border: 0;
+	-webkit-appearance: none;
+}
+.close {
+	float: right;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1;
+	color: #000000;
+	text-shadow: 0 1px 0 #ffffff;
+	opacity: 0.2;
+	filter: alpha(opacity=20);
+}
+.has-error .help-block, .has-error .control-label, .has-error .radio, .has-error .checkbox, .has-error .radio-inline, .has-error .checkbox-inline, .has-error.radio label, .has-error.checkbox label, .has-error.radio-inline label, .has-error.checkbox-inline label {
+	color: #f56b6b;
+}
+.has-error .form-control {
+	border-color: #f56b6b;
+}
+div.required .control-label:not(span):before, td.required:before {
+	content: '* ';
+	color: #F00;
+	font-weight: bold;
+}
+.middle{vertical-align:middle !important}
+.middle span.label{padding: 4px 10px; font-size:12px}
+.tab-content legend{padding-bottom: 4px}
+.img-thumbnail {
+	padding: 4px;
+	line-height: 1.42857143;
+	background-color: #ffffff;
+	border: 1px solid #dddddd;
+	border-radius: 3px;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+}
+.glt-upload-step {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	margin: 20px 0 50px 0;
+}
+.glt-upload-step li {
+float: left;
+width: 33.3333333333%;
+text-align: center;
+height: 3px;
+background: #ccc;
+position: relative;
+}
+.glt-upload-step li .stepicon {
+position: absolute;
+top: -11px;
+left: 50%;
+margin-left: -11.5px;
+width: 22px;
+height: 22px;
+border: 1px #dadada solid;
+background: #f7f7f7;
+border-radius: 50%;
+}
+.glt-upload-step li.active .stepicon span {
+background: #F90;
+}
+.glt-upload-step li .stepicon span {
+width: 16px;
+height: 16px;
+display: block;
+background: #ccc;
+border-radius: 50%;
+margin: 2px 0 0 2px;
+}
+.glt-upload-step li.active .steptext {
+color: #F90;
+font-weight: bold;
+}
+.glt-upload-step li .steptext {
+position: absolute;
+top: 30px;
+left: 50%;
+margin-left: -100px;
+width: 200px;
+}
