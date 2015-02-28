@@ -15,7 +15,7 @@ $contents = '';
 $date_added = 0;
 
 // kiem tra tu cach xem album
-if( nv_user_in_groups( $global_photo_cat[$catalogs_id]['groups_view'] ) )
+if( nv_user_in_groups( $global_photo_cat[$category_id]['groups_view'] ) )
 {	
 	// truy van lay thong tin album
 	//$query = $db->query( 'SELECT * FROM ' . TABLE_PHOTO_NAME . '_album WHERE album_id = ' . $album_id );
@@ -55,7 +55,7 @@ if( nv_user_in_groups( $global_photo_cat[$catalogs_id]['groups_view'] ) )
 	}
 	
 	// rewrite link
-	$base_url_rewrite = nv_url_rewrite( NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $global_photo_cat[$album['catalogs_id']]['alias'] . '/' . $album['alias'] . '-' . $album['album_id'] . $global_config['rewrite_exturl'], true );
+	$base_url_rewrite = nv_url_rewrite( NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $global_photo_cat[$album['category_id']]['alias'] . '/' . $album['alias'] . '-' . $album['album_id'] . $global_config['rewrite_exturl'], true );
 	if( $_SERVER['REQUEST_URI'] != $base_url_rewrite )
 	{
 		Header( 'Location: ' . $base_url_rewrite );
@@ -81,18 +81,18 @@ if( nv_user_in_groups( $global_photo_cat[$catalogs_id]['groups_view'] ) )
 	$photo->closeCursor();
 	
 	// album cung chu de
-	$sql = 'SELECT a.album_id, a.catalogs_id, a.name, a.alias, a.capturelocal, a.description, a.num_photo, a.date_added, r.file, r.thumb FROM ' . TABLE_PHOTO_NAME . '_album a 
+	$sql = 'SELECT a.album_id, a.category_id, a.name, a.alias, a.capturelocal, a.description, a.num_photo, a.date_added, r.file, r.thumb FROM ' . TABLE_PHOTO_NAME . '_album a 
 		LEFT JOIN  ' . TABLE_PHOTO_NAME . '_rows r ON ( a.album_id = r.album_id )
-		WHERE a.status= 1 AND a.catalogs_id=' . $album['catalogs_id'] . ' AND r.defaults = 1 AND a.album_id != '. $album['album_id'] .' 
+		WHERE a.status= 1 AND a.category_id=' . $album['category_id'] . ' AND r.defaults = 1 AND a.album_id != '. $album['album_id'] .' 
 		ORDER BY a.date_added DESC 
 		LIMIT 0, 6';
 	$result = $db->query( $sql );
-	$other_catalogs_album = array();
+	$other_category_album = array();
 	while( $item = $result->fetch() )
 	{
-		$item['link'] = $global_photo_cat[$album['catalogs_id']]['link'] . '/' . $item['alias'] . '-' . $item['album_id'] . $global_config['rewrite_exturl'];
+		$item['link'] = $global_photo_cat[$album['category_id']]['link'] . '/' . $item['alias'] . '-' . $item['album_id'] . $global_config['rewrite_exturl'];
 			
-		$other_catalogs_album[] = $item;
+		$other_category_album[] = $item;
 	}
 	$result->closeCursor();
  
@@ -103,7 +103,7 @@ if( nv_user_in_groups( $global_photo_cat[$catalogs_id]['groups_view'] ) )
 	
 	
 	// goi ham xu ly giao dien 
-	$contents = detail_album( $album, $array_photo, $other_catalogs_album );
+	$contents = detail_album( $album, $array_photo, $other_category_album );
 	
 	// truyen thong tin seo
 	$page_title = $album['meta_title'];
@@ -115,7 +115,7 @@ if( nv_user_in_groups( $global_photo_cat[$catalogs_id]['groups_view'] ) )
 else
 {
 	// khong co quyen xem album
-	$contents = no_permission( $global_photo_cat[$catalogs_id]['groups_view'] );
+	$contents = no_permission( $global_photo_cat[$category_id]['groups_view'] );
 }
 
 include NV_ROOTDIR . '/includes/header.php';

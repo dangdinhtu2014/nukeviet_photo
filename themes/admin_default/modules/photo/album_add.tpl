@@ -48,15 +48,15 @@
 								</li>
 						</ul>
 						<div class="form-group required">
-							<label class="col-sm-2 control-label" for="input-name">{LANG.album_name}</label>
-							<div class="col-sm-10">
+							<label class="col-sm-4 control-label" for="input-name">{LANG.album_name}</label>
+							<div class="col-sm-20">
 								<input type="text" name="name" value="{DATA.name}" placeholder="{LANG.album_name}" id="input-name" class="form-control" />
 								<!-- BEGIN: error_name --><div class="text-danger">{error_name}</div><!-- END: error_name -->
 							</div>
 						</div>
 						<div class="form-group required">
-							<label class="col-sm-2 control-label" for="input-alias">{LANG.album_alias}</label>
-							<div class="col-sm-10">
+							<label class="col-sm-4 control-label" for="input-alias">{LANG.album_alias}</label>
+							<div class="col-sm-20">
 								<div class="input-group">
 									<input class="form-control" name="alias" placeholder="{LANG.album_alias}"  type="text" value="{DATA.alias}" maxlength="255" id="input-alias"/>
 									<div class="input-group-addon fixaddon" data-toggle="tooltip" title="{LANG.create_alias}">
@@ -66,8 +66,8 @@
 							</div>
 						</div>
 						<div class="form-group required">
-							<label class="col-sm-2 control-label" for="input-folder">{LANG.album_folder}</label>
-							<div class="col-sm-10">
+							<label class="col-sm-4 control-label" for="input-folder">{LANG.album_folder}</label>
+							<div class="col-sm-20">
 								<div class="input-group" rel="folder">
 									<input class="form-control" name="folder" placeholder="{LANG.album_folder}" type="text" value="{DATA.folder}" maxlength="255" id="input-folder"/>
 									<div class="input-group-addon fixaddon" data-toggle="tooltip" title="{LANG.delete_sign}">
@@ -80,67 +80,67 @@
 						</div>
 						
 						<div class="form-group required">
-							<label class="col-sm-2 control-label" for="input-parent">{LANG.album_catalogs}</label>
-							<div class="col-sm-10">
-								<select class="form-control" name="catalogs_id">
-									<option value="0">{LANG.album_catalogs_select}</option>
-									<!-- BEGIN: catalogs -->
+							<label class="col-sm-4 control-label" for="input-parent">{LANG.album_category}</label>
+							<div class="col-sm-20">
+								<select class="form-control" name="category_id">
+									<option value="0">{LANG.album_category_select}</option>
+									<!-- BEGIN: category -->
 									<option value="{CATALOG.key}" {CATALOG.selected}>{CATALOG.name}</option>
-									<!-- END: catalogs -->
+									<!-- END: category -->
 								</select>
-								<!-- BEGIN: error_catalogs--><div class="text-danger">{error_catalogs}</div><!-- END: error_catalogs -->
+								<!-- BEGIN: error_category--><div class="text-danger">{error_category}</div><!-- END: error_category -->
 								
 							</div>
 						</div>
 						
 						<div class="form-group">
-							 <label class="col-sm-2 control-label" for="input-description">{LANG.album_description} </label>
-							 <div class="col-sm-10">
+							 <label class="col-sm-4 control-label" for="input-description">{LANG.album_description} </label>
+							 <div class="col-sm-20">
 								  <textarea name="description" rows="2" placeholder="{LANG.album_description}" id="input-description" class="form-control">{DATA.description}</textarea>
 								  <!-- <span class="text-middle"> {GLANG.length_characters}: <span id="descriptionlength" class="red">0</span>. {GLANG.description_suggest_max} </span> -->            
 							  </div>
 						 </div>
 						 <div class="form-group required">
-								<label class="col-sm-2 control-label" for="input-meta-title">{LANG.album_meta_title}</label>
-								<div class="col-sm-10">
+								<label class="col-sm-4 control-label" for="input-meta-title">{LANG.album_meta_title}</label>
+								<div class="col-sm-20">
 									<input type="text" name="meta_title" value="{DATA.meta_title}" placeholder="{LANG.album_meta_title}" id="input-meta-title" class="form-control" />
 									<!-- BEGIN: error_meta_title--><div class="text-danger">{error_meta_title}</div><!-- END: error_meta_title -->
 								</div>
 						 </div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="input-meta-description">{LANG.album_meta_description}</label>
-							<div class="col-sm-10">
+							<label class="col-sm-4 control-label" for="input-meta-description">{LANG.album_meta_description}</label>
+							<div class="col-sm-20">
 								<textarea name="meta_description" rows="2" placeholder="{LANG.album_meta_description}" id="input-meta-description" class="form-control">{DATA.meta_description}</textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="input-meta-keyword">{LANG.album_meta_keyword}</label>
-							<div class="col-sm-10">
+							<label class="col-sm-4 control-label" for="input-meta-keyword">{LANG.album_meta_keyword}</label>
+							<div class="col-sm-20">
 								<textarea name="meta_keyword" rows="2" placeholder="{LANG.album_meta_keyword}" id="input-meta-keyword" class="form-control">{DATA.meta_keyword}</textarea>
 							</div>
 						</div>
 						<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-model">{LANG.album_model}</label>
-								<div class="col-sm-10">
+								<label class="col-sm-4 control-label" for="input-model">{LANG.album_model}</label>
+								<div class="col-sm-20">
 									<input type="text" name="model" value="{DATA.model}" placeholder="{LANG.album_model}" id="input-model" class="form-control" />
  								</div>
 						</div>
 						<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-capturedate">{LANG.album_capturedate}</label>
-								<div class="col-sm-10">
+								<label class="col-sm-4 control-label" for="input-capturedate">{LANG.album_capturedate}</label>
+								<div class="col-sm-20">
 									<input type="text" name="capturedate" value="{DATA.capturedate}" placeholder="{LANG.album_capturedate}" id="input-capturedate" class="form-control" maxlength="10"/>
  								</div>
 						</div>
 						<div class="form-group">
-								<label class="col-sm-2 control-label" for="input-capturelocal">{LANG.album_capturelocal}</label>
-								<div class="col-sm-10">
+								<label class="col-sm-4 control-label" for="input-capturelocal">{LANG.album_capturelocal}</label>
+								<div class="col-sm-20">
 									<input type="text" name="capturelocal" value="{DATA.capturelocal}" placeholder="{LANG.album_capturelocal}" id="input-capturelocal" class="form-control" />
  								</div>
 						</div>
 						
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="input-parent">{LANG.album_layout}</label>
-							<div class="col-sm-10">
+							<label class="col-sm-4 control-label" for="input-parent">{LANG.album_layout}</label>
+							<div class="col-sm-20">
 								<select class="form-control" name="layout">
 									<option value="">{LANG.defaults}</option>
 									<!-- BEGIN: layout -->
@@ -150,8 +150,8 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="input-keyword"> {GLANG.groups_view}</label>
-							<div class="col-sm-10">
+							<label class="col-sm-4 control-label" for="input-keyword"> {GLANG.groups_view}</label>
+							<div class="col-sm-20">
 								<!-- BEGIN: groups_view -->
 								 
 								<label><input name="groups_view[]" type="checkbox" value="{GROUPS_VIEW.value}" {GROUPS_VIEW.checked} />{GROUPS_VIEW.title}</label>
@@ -162,8 +162,8 @@
 						 
 									 
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="input-status">{LANG.album_show_status}</label>
-							<div class="col-sm-10">
+							<label class="col-sm-4 control-label" for="input-status">{LANG.album_show_status}</label>
+							<div class="col-sm-20">
 								<select name="status" id="input-status" class="form-control">
 									<!-- BEGIN: status -->
 									<option value="{STATUS.key}" {STATUS.selected}>{STATUS.name}</option>
@@ -418,16 +418,16 @@ function checkform()
 		}
 	}
 	
-	var catalogs = $('select[name="catalogs_id"]');
-	if( catalogs.val() == 0 )
+	var category = $('select[name="category_id"]');
+	if( category.val() == 0 )
 	{
-		catalogs.after('<div class="text-danger">{LANG.album_error_catalogs}</div>');
+		category.after('<div class="text-danger">{LANG.album_error_category}</div>');
 		is = false;
 	}else
 	{
-		var ecatalogs = $(catalogs).parent().parent();	
-		if (ecatalogs.hasClass('required')) {
-			ecatalogs.removeClass('has-error');
+		var ecategory = $(category).parent().parent();	
+		if (ecategory.hasClass('required')) {
+			ecategory.removeClass('has-error');
 		}
 	}
 	
@@ -471,7 +471,7 @@ function checkform()
 $('a[rel="tab-image"], a[rel="tab-info-image"]').hover( function(e) {	
 	return checkform();
 });
-$('a[rel="tab-image"], a[rel="tab-info-image"], input[type="submit"], button[type="submit"], input[type="text"], select[name="catalogs_id"]').on('click keyup blur change', function(e) {	
+$('a[rel="tab-image"], a[rel="tab-info-image"], input[type="submit"], button[type="submit"], input[type="text"], select[name="category_id"]').on('click keyup blur change', function(e) {	
 	return checkform();
 });
 $('body').on('click', '.fixradio', function(e) {	
@@ -484,7 +484,7 @@ $('body').on('click', '.fixradio', function(e) {
 });
 
 $('body').on('click', '.deleterows', function(e) {	
-	var album_id = '{album_id}';
+	var album_id = '{DATA.album_id}';
 	var row_id = $(this).attr('data-row');
 	var token = $(this).attr('data-token');
 	var token_image = $(this).attr('data-token-image');
@@ -499,10 +499,10 @@ $('body').on('click', '.deleterows', function(e) {
 			dataType: 'json',
 			data: 'album_id=' + album_id + '&row_id=' + row_id + '&token=' + token + '&token_image=' + token_image + '&token_thumb=' + token_thumb + '&thumb=' + thumb + '&image_url=' + image_url,
 			beforeSend: function() {
-				$('.labelradio .fa-spinner').css('display', 'block');
+				$('#images-' + key + ' .deleterows .fa-spinner').css('display', 'block');
 			},	
 			complete: function() {
-				$('.labelradio .fa-spinner').css('display', 'none');
+				$('#images-' + key + ' .fa-spinner').css('display', 'none');
 			},
 			success: function(json) {
 				$('.alert').remove();
@@ -513,8 +513,30 @@ $('body').on('click', '.deleterows', function(e) {
 				}
 				
 				if (json['success']) {
-					$('#content').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+					
 					$('#images-' + key).remove();
+					
+					$('#content').prepend('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
+					
+					if( $('input[name="albums['+key+'][defaults]"]' ).is(":checked") )
+					{
+						$('body .fixradio').get(0).checked = true;
+					}else
+					{
+						var check = 0;
+						$('body .fixradio').each(function() 
+						{
+							 if( $(this).is(":checked") )
+							 {
+								++check;
+							 }
+						});
+						if( check == 0 )
+						{
+							$('body .fixradio').get(0).checked = true;
+						}
+					}
+					
 				}		
 				 
 			},
@@ -538,7 +560,7 @@ $('button[type=\'submit\']').on('click', function()
 	if( checked == 0 )
 	{
 		$('.message_info').show();
-		
+		alert('{LANG.check_form}');
 		return false;
 	}else
 	{

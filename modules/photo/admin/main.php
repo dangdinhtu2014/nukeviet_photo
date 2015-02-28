@@ -11,7 +11,7 @@
 
 if( ! defined( 'NV_IS_FILE_ADMIN' ) ) die( 'Stop!!!' );
 
-$page_title = $lang_module['catalogs'];
+$page_title = $lang_module['category'];
  
  
 include NV_ROOTDIR . '/includes/header.php';

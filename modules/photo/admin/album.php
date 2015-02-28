@@ -104,6 +104,7 @@ if( ACTION_METHOD == 'delete' )
 		$a = 0;
 		foreach( $del_array as $album_id )
 		{
+ 
 			$album = $db->query( 'SELECT * FROM ' . TABLE_PHOTO_NAME . '_album WHERE album_id=' . (int)$album_id )->fetch();
 			
 			$delete = $db->prepare('DELETE FROM ' . TABLE_PHOTO_NAME . '_album WHERE album_id=' . (int)$album['album_id'] );
@@ -262,7 +263,7 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 	
 	$data = array(
 		'album_id' => 0,
-		'catalogs_id' => 0,
+		'category_id' => 0,
 		'name' => '',
 		'alias' => '',
 		'description' => '',
@@ -296,7 +297,7 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 		$data = $db->query( 'SELECT *
 		FROM ' . TABLE_PHOTO_NAME . '_album  
 		WHERE album_id=' . $data['album_id'] )->fetch();
-		$data['old_catalogs_id'] = $data['catalogs_id'];
+		$data['old_category_id'] = $data['category_id'];
 		$folder = explode('/', $data['folder']);
 		$data['folder'] = end( $folder );
 		
@@ -333,7 +334,7 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 		$data['alias'] = nv_substr( $nv_Request->get_title( 'alias', 'post', '', '' ), 0, 255 );
 		$data['folder'] = nv_substr( $nv_Request->get_title( 'folder', 'post', '', '' ), 0, 255 );
 		$data['folder'] = change_alias( $data['folder'] );
-		$data['catalogs_id'] = $nv_Request->get_int( 'catalogs_id', 'post', 0 );
+		$data['category_id'] = $nv_Request->get_int( 'category_id', 'post', 0 );
  		$data['description'] = $nv_Request->get_textarea( 'description', 'post', '', 'br', 1 );
 		$data['meta_title'] = nv_substr( $nv_Request->get_title( 'meta_title', 'post', '', '' ), 0, 255 );
 		$data['meta_description'] = nv_substr( $nv_Request->get_title( 'meta_description', 'post', '', '' ), 0, 255 );
@@ -363,9 +364,9 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 		{
 			$error['folder'] = $lang_module['album_error_folder'];	
 		}
-		if( empty( $data['catalogs_id'] ) )
+		if( empty( $data['category_id'] ) )
 		{
-			$error['catalogs'] = $lang_module['album_error_catalogs'];	
+			$error['category'] = $lang_module['album_error_category'];	
 		}
 		if( empty( $data['meta_title'] ) )
 		{
@@ -403,7 +404,7 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 			{
  
 				$stmt = $db->prepare( 'INSERT INTO ' . TABLE_PHOTO_NAME . '_album SET 
-					catalogs_id = ' . intval( $data['catalogs_id'] ) . ', 
+					category_id = ' . intval( $data['category_id'] ) . ', 
 					status=' . intval( $data['status'] ) . ', 
 					date_added=' . intval( $data['date_added'] ) . ',  
 					date_modified=' . intval( $data['date_modified'] ) . ', 
@@ -618,7 +619,7 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 						//var_dump($e);
 					}
 					
-					$db->query('UPDATE ' . TABLE_PHOTO_NAME . '_catalogs SET num_album = (SELECT COUNT(*) FROM ' . TABLE_PHOTO_NAME . '_album WHERE catalogs_id = '. $data['catalogs_id'] .') WHERE catalogs_id = '. $data['catalogs_id'] );
+					$db->query('UPDATE ' . TABLE_PHOTO_NAME . '_category SET num_album = (SELECT COUNT(*) FROM ' . TABLE_PHOTO_NAME . '_album WHERE category_id = '. $data['category_id'] .') WHERE category_id = '. $data['category_id'] );
 							
 					
 					nv_insert_logs( NV_LANG_DATA, $module_name, 'Add A Album', 'album_id: ' . $data['album_id'], $admin_info['userid'] );	 
@@ -639,7 +640,7 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 				{
 						
 					$stmt = $db->prepare( 'UPDATE ' . TABLE_PHOTO_NAME . '_album SET 
-						catalogs_id = ' . intval( $data['catalogs_id'] ) . ', 
+						category_id = ' . intval( $data['category_id'] ) . ', 
 						status=' . intval( $data['status'] ) . ', 
 						date_added=' . intval( $data['date_added'] ) . ',  
 						date_modified=' . intval( $data['date_modified'] ) . ', 
@@ -867,13 +868,13 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 								$db->query('UPDATE ' . TABLE_PHOTO_NAME . '_album SET num_photo = (SELECT COUNT(*) FROM ' . TABLE_PHOTO_NAME . '_rows WHERE album_id = '. $data['album_id'] .') WHERE album_id = '. $data['album_id'] );
 							}
 							
-							if( $data['old_catalogs_id'] == $data['catalogs_id'] )
+							if( $data['old_category_id'] == $data['category_id'] )
 							{
-								$db->query('UPDATE ' . TABLE_PHOTO_NAME . '_catalogs SET num_album = (SELECT COUNT(*) FROM ' . TABLE_PHOTO_NAME . '_album WHERE catalogs_id = '. $data['catalogs_id'] .') WHERE catalogs_id = '. $data['catalogs_id'] );
+								$db->query('UPDATE ' . TABLE_PHOTO_NAME . '_category SET num_album = (SELECT COUNT(*) FROM ' . TABLE_PHOTO_NAME . '_album WHERE category_id = '. $data['category_id'] .') WHERE category_id = '. $data['category_id'] );
 							}else
 							{
-								$db->query('UPDATE ' . TABLE_PHOTO_NAME . '_catalogs SET num_album = (SELECT COUNT(*) FROM ' . TABLE_PHOTO_NAME . '_album WHERE catalogs_id = '. $data['catalogs_id'] .') WHERE catalogs_id = '. $data['catalogs_id'] );
-								$db->query('UPDATE ' . TABLE_PHOTO_NAME . '_catalogs SET num_album = (SELECT COUNT(*) FROM ' . TABLE_PHOTO_NAME . '_album WHERE catalogs_id = '. $data['old_catalogs_id'] .') WHERE catalogs_id = '. $data['old_catalogs_id'] );
+								$db->query('UPDATE ' . TABLE_PHOTO_NAME . '_category SET num_album = (SELECT COUNT(*) FROM ' . TABLE_PHOTO_NAME . '_album WHERE category_id = '. $data['category_id'] .') WHERE category_id = '. $data['category_id'] );
+								$db->query('UPDATE ' . TABLE_PHOTO_NAME . '_category SET num_album = (SELECT COUNT(*) FROM ' . TABLE_PHOTO_NAME . '_album WHERE category_id = '. $data['old_category_id'] .') WHERE category_id = '. $data['old_category_id'] );
 							}
 							
 							
@@ -953,7 +954,7 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 		}
 		$xtitle_i .= $array_value['name'];
 		$sl = '';
-		if( $catid_i == $data['catalogs_id'] )
+		if( $catid_i == $data['category_id'] )
 		{
 			$sl = ' selected="selected"';
 		}
@@ -961,7 +962,7 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 			'key' => $catid_i,
 			'selected' => $sl,
 			'name' => $xtitle_i ) );
-		$xtpl->parse( 'main.catalogs' );
+		$xtpl->parse( 'main.category' );
  	 
 	}
 	
@@ -991,10 +992,10 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 		$xtpl->parse( 'main.error_folder' );
 	}
 	
-	if( isset( $error['catalogs'] ) )
+	if( isset( $error['category'] ) )
 	{
-		$xtpl->assign( 'error_catalogs', $error['catalogs'] );
-		$xtpl->parse( 'main.error_catalogs' );
+		$xtpl->assign( 'error_category', $error['category'] );
+		$xtpl->parse( 'main.error_category' );
 	}
 
 	if( isset( $error['name'] ) )
@@ -1087,7 +1088,7 @@ $page = $nv_Request->get_int( 'page', 'get', 1 );
 $data['filter_status'] = $nv_Request->get_string( 'filter_status', 'get', '' );
 $data['filter_name'] = strip_tags( $nv_Request->get_string( 'filter_name', 'get', '' ) );
 $data['filter_date_added'] = $nv_Request->get_string( 'filter_date_added', 'get', '' );
-$data['filter_catalogs'] = $nv_Request->get_int( 'filter_catalogs', 'get', 0 );
+$data['filter_category'] = $nv_Request->get_int( 'filter_category', 'get', 0 );
 
 $sort = $nv_Request->get_string( 'sort', 'get', '' );
 $order = $nv_Request->get_string( 'order', 'get' ) == 'desc' ? 'desc' : 'asc';
@@ -1100,9 +1101,9 @@ if( ! empty( $data['filter_name'] ) )
 	$sql .= " AND name LIKE '" . $db->dblikeescape( $data['filter_name'] ) . "%'";
 }
  
-if( $data['filter_catalogs'] > 0 )
+if( $data['filter_category'] > 0 )
 {
-	$sql .= " AND catalogs_id = " . ( int )$data['filter_catalogs'];
+	$sql .= " AND category_id = " . ( int )$data['filter_category'];
 }
  
 if( isset( $data['filter_status'] ) && is_numeric( $data['filter_status'] ) )
@@ -1117,7 +1118,7 @@ if( preg_match( '/^([0-9]{1,2})\/([0-9]{1,2})\/([0-9]{4})$/', $data['filter_date
 
 	$sql .= " AND date_added BETWEEN " . $date_added_start . " AND " . $date_added_end . "";
 }
-$sort_data = array( 'name', 'catalogs_id', 'date_added' );
+$sort_data = array( 'name', 'category_id', 'date_added' );
 if( isset( $sort ) && in_array( $sort, $sort_data ) )
 {
 
@@ -1172,7 +1173,7 @@ $xtpl->assign( 'URL_SEARCH', NV_BASE_ADMINURL . 'index.php?' . NV_NAME_VARIABLE 
 $order2 = ( $order == 'asc' ) ? 'desc' : 'asc';
 $xtpl->assign( 'URL_NAME', NV_BASE_ADMINURL . 'index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $op . '&amp;sort=name&amp;order=' . $order2 . '&amp;per_page=' . $per_page );
 $xtpl->assign( 'URL_WEIGHT', NV_BASE_ADMINURL . 'index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $op . '&amp;sort=weight&amp;order=' . $order2 . '&amp;per_page=' . $per_page );
-$xtpl->assign( 'URL_CATALOGS', NV_BASE_ADMINURL . 'index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $op . '&amp;sort=catalogs_id&amp;order=' . $order2 . '&amp;per_page=' . $per_page );
+$xtpl->assign( 'URL_category', NV_BASE_ADMINURL . 'index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $op . '&amp;sort=category_id&amp;order=' . $order2 . '&amp;per_page=' . $per_page );
 
 $xtpl->assign( 'ADD_NEW', NV_BASE_ADMINURL . "index.php?" . NV_LANG_VARIABLE . "=" . NV_LANG_DATA . "&" . NV_NAME_VARIABLE . "=" . $module_name . "&" . NV_OP_VARIABLE . "=" . $op . "&action=add" );
  
@@ -1191,8 +1192,8 @@ foreach( $global_photo_cat as $key => $value )
 		$xtitle_i .= '>&nbsp;';
 	}
 	$xtitle_i .= $value['name'];	
-	$xtpl->assign( 'CATALOGS', array( 'key'=> $key, 'name'=> $xtitle_i, 'selected'=> ( $key == $data['filter_catalogs'] ) ? 'selected="selected"': '' ) );
-	$xtpl->parse( 'main.filter_catalogs' );
+	$xtpl->assign( 'category', array( 'key'=> $key, 'name'=> $xtitle_i, 'selected'=> ( $key == $data['filter_category'] ) ? 'selected="selected"': '' ) );
+	$xtpl->parse( 'main.filter_category' );
 	
 }
 foreach( $array_status as $key => $name )
@@ -1208,8 +1209,8 @@ if( ! empty( $array ) )
 	{
  
 
-		$item['catalogs'] = isset( $global_photo_cat[$item['catalogs_id']] ) ? $global_photo_cat[$item['catalogs_id']]['name'] : 'N/A';
-		$item['catalogs_link'] = NV_BASE_ADMINURL . "index.php?" . NV_LANG_VARIABLE . "=" . NV_LANG_DATA . "&" . NV_NAME_VARIABLE . "=" . $module_name . "&" . NV_OP_VARIABLE . "=album&filter_catalogs=" . $item['catalogs_id'];
+		$item['category'] = isset( $global_photo_cat[$item['category_id']] ) ? $global_photo_cat[$item['category_id']]['name'] : 'N/A';
+		$item['category_link'] = NV_BASE_ADMINURL . "index.php?" . NV_LANG_VARIABLE . "=" . NV_LANG_DATA . "&" . NV_NAME_VARIABLE . "=" . $module_name . "&" . NV_OP_VARIABLE . "=album&filter_category=" . $item['category_id'];
 		$item['date_added'] = nv_date( 'd/m/Y', $item['date_added'] );
 		$item['token'] = md5( $global_config['sitekey'] . session_id() . $item['album_id'] );
 		

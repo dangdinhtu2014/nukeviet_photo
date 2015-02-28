@@ -1,11 +1,16 @@
 <!-- BEGIN: main -->
 
 <div id="content"> 
+	<!-- BEGIN: success -->
+		<div class="alert alert-success">
+			<i class="fa fa-check-circle"></i> {SUCCESS}
+		</div>
+	<!-- END: success -->
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title" style="float:left"><i class="fa fa-list"></i> {LANG.album_list}</h3> 
 			 <div class="pull-right">
-				<a href="{ADD_NEW}" data-toggle="tooltip" data-placement="top" title="{LANG.add_new}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+				<a href="{ADD_NEW}" data-toggle="tooltip" data-placement="top" title="{LANG.add_new}" class="btn btn-success"><i class="fa fa-plus"></i></a>
 				<button type="button" data-toggle="tooltip" data-placement="top" title="{LANG.delete}" class="btn btn-danger" id="button-delete">
 					<i class="fa fa-trash-o"></i>
 				</button>
@@ -18,22 +23,22 @@
 					<form action="{NV_BASE_ADMINURL}index.php" method="get">
 					<input type="hidden" name ="{NV_NAME_VARIABLE}"value="{MODULE_NAME}" />
 					<input type="hidden" name ="{NV_OP_VARIABLE}"value="{OP}" />
-					<div class="col-sm-6">
+					<div class="col-sm-12">
 						<div class="form-group">
 							<label class="control-label" for="input-album-name">{LANG.album_name}</label>
 							<input type="text" name="filter_name" value="{DATA.filter_name}" placeholder="{LANG.album_name}" id="input-album-name" class="form-control">
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="input-catalogs">{LANG.album_catalogs}</label>
-							<select name="filter_catalogs" id="input-catalogs" class="form-control">
+							<label class="control-label" for="input-category">{LANG.album_category}</label>
+							<select name="filter_category" id="input-category" class="form-control">
 								<option value="*">   --------  </option>
-								<!-- BEGIN: filter_catalogs -->
-								<option value="{CATALOGS.key}" {CATALOGS.selected}>{CATALOGS.name}</option>
-								<!-- END: filter_catalogs -->
+								<!-- BEGIN: filter_category -->
+								<option value="{category.key}" {category.selected}>{category.name}</option>
+								<!-- END: filter_category -->
 							</select>
 						</div>
 					</div>
-					<div class="col-sm-6">
+					<div class="col-sm-12">
 						<div class="form-group">
 							<label class="control-label" for="input-status">{LANG.album_status}</label>
 							<select name="filter_status" id="input-status" class="form-control">
@@ -63,13 +68,13 @@
 						<thead>
 							<tr>
 								<td class="col-md-0 text-center" ><input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);"></td>
-								<td class="col-md-4 text-left"><a href="{URL_NAME}">{LANG.album_name}</a> </td>
-								<td class="col-md-2 text-center"> <strong>{LANG.album_catalogs} </strong></td>
-								<td class="col-md-2 text-center"> <strong>{LANG.album_num_photo} </strong></td>
-								<td class="col-md-1 text-center"> <strong>{LANG.album_status} </strong></td>
-								<td class="col-md-1 text-center"> <strong>{LANG.album_date_added} </strong></td>
-								<td class="col-md-1 text-center" ><a href="{URL_WEIGHT}">{LANG.weight}</a></td>
-								<td class="col-md-2 text-right"> <strong>{LANG.action} </strong></td>
+								<td class="col-md-8 text-left"><a href="{URL_NAME}">{LANG.album_name}</a> </td>
+								<td class="col-md-4 text-center"> <strong>{LANG.album_category} </strong></td>
+								<td class="col-md-4 text-center"> <strong>{LANG.album_num_photo} </strong></td>
+								<td class="col-md-2 text-center"> <strong>{LANG.album_status} </strong></td>
+								<td class="col-md-2 text-center"> <strong>{LANG.album_date_added} </strong></td>
+								<td class="col-md-2 text-center" ><a href="{URL_WEIGHT}">{LANG.weight}</a></td>
+								<td class="col-md-4 text-right"> <strong>{LANG.action} </strong></td>
 							</tr>
 						</thead>
 						<tbody>
@@ -78,7 +83,7 @@
 								<td class="text-left"><input type="checkbox" name="selected[]" value="{LOOP.album_id}"></td>
 								<td class="text-left"><a href="{LOOP.link}"> <strong>{LOOP.name}</strong> </a> </td>
 								<td class="text-center">
-									 <a href="{LOOP.catalogs_link}">{LOOP.catalogs}</a>
+									 <a href="{LOOP.category_link}">{LOOP.category}</a>
 								</td>
 								<td align="center">
 									{LOOP.num_photo}

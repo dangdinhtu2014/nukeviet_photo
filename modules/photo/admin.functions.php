@@ -13,7 +13,7 @@ if( ! defined( 'NV_ADMIN' ) or ! defined( 'NV_MAINFILE' ) or ! defined( 'NV_IS_M
  
 $allow_func = array(
 	'main',
-	'catalogs',
+	'category',
 	'alias',
 	'album',
 	'setting' );
@@ -28,7 +28,7 @@ require_once NV_ROOTDIR . '/modules/' . $module_file . '/global.functions.php';
  
 $array_status = array( '0' => $lang_module['disabled'], '1' => $lang_module['enable'] );
 
-$array_viewcat = array( 'viewcat_grid' => $lang_module['catalogs_viewcat_grid'] );
+$array_viewcat = array( 'viewcat_grid' => $lang_module['category_viewcat_grid'] );
 
 $array_home_view = array( 'home_view_slider' => $lang_module['home_view_slider'], 'home_view_grid_by_cat' => $lang_module['home_view_grid_by_cat'], 'home_view_grid_by_album' => $lang_module['home_view_grid_by_album'] );
 
@@ -49,12 +49,12 @@ function nv_fix_cat_order( $parent_id = 0, $order = 0, $lev = 0 )
 {
 	global $db, $module_data;
 
-	$sql = 'SELECT catalogs_id, parent_id FROM ' . TABLE_PHOTO_NAME . '_catalogs WHERE parent_id=' . $parent_id . ' ORDER BY weight ASC';
+	$sql = 'SELECT category_id, parent_id FROM ' . TABLE_PHOTO_NAME . '_category WHERE parent_id=' . $parent_id . ' ORDER BY weight ASC';
 	$result = $db->query( $sql );
 	$array_cat_order = array();
 	while( $row = $result->fetch() )
 	{
-		$array_cat_order[] = $row['catalogs_id'];
+		$array_cat_order[] = $row['category_id'];
 	}
 	$result->closeCursor();
 	$weight = 0;
@@ -66,18 +66,18 @@ function nv_fix_cat_order( $parent_id = 0, $order = 0, $lev = 0 )
 	{
 		$lev = 0;
 	}
-	foreach( $array_cat_order as $catalogs_id_i )
+	foreach( $array_cat_order as $category_id_i )
 	{
 		++$order;
 		++$weight;
-		$sql = 'UPDATE ' . TABLE_PHOTO_NAME . '_catalogs SET weight=' . $weight . ', sort_order=' . $order . ', lev=' . $lev . ' WHERE catalogs_id=' . intval( $catalogs_id_i );
+		$sql = 'UPDATE ' . TABLE_PHOTO_NAME . '_category SET weight=' . $weight . ', sort_order=' . $order . ', lev=' . $lev . ' WHERE category_id=' . intval( $category_id_i );
 		$db->query( $sql );
-		$order = nv_fix_cat_order( $catalogs_id_i, $order, $lev );
+		$order = nv_fix_cat_order( $category_id_i, $order, $lev );
 	}
 	$numsubcat = $weight;
 	if( $parent_id > 0 )
 	{
-		$sql = 'UPDATE ' . TABLE_PHOTO_NAME . '_catalogs SET numsubcat=' . $numsubcat;
+		$sql = 'UPDATE ' . TABLE_PHOTO_NAME . '_category SET numsubcat=' . $numsubcat;
 		if( $numsubcat == 0 )
 		{
 			$sql .= ",subcatid='', viewcat='viewcat_grid'";
@@ -86,7 +86,7 @@ function nv_fix_cat_order( $parent_id = 0, $order = 0, $lev = 0 )
 		{
 			$sql .= ",subcatid='" . implode( ',', $array_cat_order ) . "'";
 		}
-		$sql .= ' WHERE catalogs_id=' . intval( $parent_id );
+		$sql .= ' WHERE category_id=' . intval( $parent_id );
 		$db->query( $sql );
 	}
 	return $order;

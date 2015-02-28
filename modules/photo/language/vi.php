@@ -27,3 +27,8 @@ $lang_module['uploadErrorRenameFile'] = 'Lỗi: Không thể đổi tên file t�
 $lang_module['detail_rate_ok'] = 'Bạn đã đánh giá %s sao. Cám ơn bạn!';
 $lang_module['detail_rate_timeout'] = 'Bạn đã bình luận rồi, hãy đợi %s phút để tiếp tục';
 $lang_module['detail_rate_unsuccess'] = 'Lỗi: Bạn không thể đánh giá !';
+
+$lang_module['album_model']='Kiểu mẫu';
+$lang_module['album_capturedate']='Ngày chụp';
+$lang_module['album_capturelocal']='Địa điểm chụp';
+$lang_module['album_rating']='Đánh giá';

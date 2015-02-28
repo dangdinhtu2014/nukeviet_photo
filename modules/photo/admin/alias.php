@@ -17,16 +17,16 @@ $alias = change_alias( $name );
 $id = $nv_Request->get_int( 'id', 'post', 0 );
 $mod = $nv_Request->get_string( 'mod', 'post', '' );
 
-if( $mod == 'catalogs' )
+if( $mod == 'category' )
 {
-	$tab = TABLE_PHOTO_NAME . '_catalogs';
-	$stmt = $db->prepare( 'SELECT COUNT(*) FROM ' . $tab . ' WHERE catalogs_id!=' . $id . ' AND alias= :alias' );
+	$tab = TABLE_PHOTO_NAME . '_category';
+	$stmt = $db->prepare( 'SELECT COUNT(*) FROM ' . $tab . ' WHERE category_id!=' . $id . ' AND alias= :alias' );
 	$stmt->bindParam( ':alias', $alias, PDO::PARAM_STR );
 	$stmt->execute();
 	$nb = $stmt->fetchColumn();
 	if( ! empty( $nb ) )
 	{
-		$nb = $db->query( 'SELECT MAX(catalogs_id) FROM ' . $tab )->fetchColumn();
+		$nb = $db->query( 'SELECT MAX(category_id) FROM ' . $tab )->fetchColumn();
 
 		$alias .= '-' . ( intval( $nb ) + 1 );
 	}

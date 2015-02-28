@@ -1,10 +1,10 @@
 <!-- BEGIN: main -->
 <div class="photo-detail">
 	<h2>{DATA.name}</h2>
-	<div><span class="title">Kiểu mẫu: </span><span>{DATA.model}</span></div>
-	<div><span class="title">Địa điểm chụp: </span><span>{DATA.capturelocal}</span></div>
-	<div><span class="title">Ngày chụp: </span><span>{DATA.capturedate}</span></div>
-	<div><span class="title">Đánh giá: </span> 
+	<div><span class="title">{LANG.album_model}: </span><span>{DATA.model}</span></div>
+	<div><span class="title">{LANG.album_capturelocal}: </span><span>{DATA.capturelocal}</span></div>
+	<div><span class="title">{LANG.album_capturedate}: </span><span>{DATA.capturedate}</span></div>
+	<div><span class="title">{LANG.album_rating}: </span> 
 		<div class="starbox small ghosting"> </div>
 		<div itemscope itemtype="http://data-vocabulary.org/Review-aggregate">
 			<span itemprop="itemreviewed"> </span>

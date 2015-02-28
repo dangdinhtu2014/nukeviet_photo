@@ -1,5 +1,10 @@
 <!-- BEGIN: main -->
 <div id="content">
+	<!-- BEGIN: success -->
+		<div class="alert alert-success">
+			<i class="fa fa-check-circle"></i> {SUCCESS}
+		</div>
+	<!-- END: success -->
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title" style="float:left"><i class="fa fa-pencil"></i> {LANG.setting}</h3>
@@ -15,8 +20,8 @@
 				<input type="hidden" name="{NV_NAME_VARIABLE}" value="{MODULE_NAME}" />
 				<input type="hidden" name="{NV_OP_VARIABLE}" value="{OP}" />
 				<div class="form-group">
-					<label class="col-sm-3 control-label" style="padding-top: 0px;">{LANG.setting_home_view}:</label>
-					<div class="col-sm-9">
+					<label class="col-sm-6 control-label" style="padding-top: 0px;">{LANG.setting_home_view}:</label>
+					<div class="col-sm-18">
 						<select class="form-control" name="home_view">
 							<!-- BEGIN: home_view -->
 							<option value="{HOME_VIEW.key}" {HOME_VIEW.selected}>{HOME_VIEW.title}</option>
@@ -25,8 +30,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label" style="padding-top: 0px;">{LANG.setting_album_view}:</label>
-					<div class="col-sm-9">
+					<label class="col-sm-6 control-label" style="padding-top: 0px;">{LANG.setting_album_view}:</label>
+					<div class="col-sm-18">
 						<select class="form-control" name="album_view">
 							<!-- BEGIN: album_view -->
 							<option value="{ALBUM_VIEW.key}" {ALBUM_VIEW.selected}>{ALBUM_VIEW.title}</option>
@@ -35,8 +40,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label">{LANG.setting_per_page_album}:</label>
-					<div class="col-sm-9">
+					<label class="col-sm-6 control-label">{LANG.setting_per_page_album}:</label>
+					<div class="col-sm-18">
 						<select class="form-control" name="per_page_album">
 							<!-- BEGIN: per_page_album -->
 							<option value="{PER_PAGE_ALBUM.key}" {PER_PAGE_ALBUM.selected}>{PER_PAGE_ALBUM.title}</option>
@@ -45,8 +50,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label">{LANG.setting_per_page_photo}:</label>
-					<div class="col-sm-9">
+					<label class="col-sm-6 control-label">{LANG.setting_per_page_photo}:</label>
+					<div class="col-sm-18">
 						<select class="form-control" name="per_page_photo">
 							<!-- BEGIN: per_page_photo -->
 							<option value="{PER_PAGE_PHOTO.key}" {PER_PAGE_PHOTO.selected}>{PER_PAGE_PHOTO.title}</option>
@@ -55,8 +60,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label">{LANG.setting_structure_upload}:</label>
-					<div class="col-sm-9">
+					<label class="col-sm-6 control-label">{LANG.setting_structure_upload}:</label>
+					<div class="col-sm-18">
 						<select class="form-control" name="structure_upload">
 							<!-- BEGIN: structure_upload -->
 							<option value="{STRUCTURE_UPLOAD.key}" {STRUCTURE_UPLOAD.selected}>{STRUCTURE_UPLOAD.title}</option>
@@ -65,14 +70,14 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label">{LANG.setting_active_logo}:</label>
-					<div class="col-sm-9">
+					<label class="col-sm-6 control-label">{LANG.setting_active_logo}:</label>
+					<div class="col-sm-18">
 						 <input type="checkbox" name="active_logo" value="1" {DATA.active_logo} />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label">{LANG.setting_logo}:</label>
-					<div class="col-sm-9">
+					<label class="col-sm-6 control-label">{LANG.setting_logo}:</label>
+					<div class="col-sm-18">
 						<div class="form-inline">
  						<div class="form-group fixgroup" style="margin-left: 0px;">
  							<input class="form-control fixlogo" name="module_logo" id="module_logo" value="{MODULE_LOGO}" maxlength="255" type="text" />
@@ -82,29 +87,29 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label">{LANG.setting_autologosize1}:</label>
-					<div class="col-sm-9">
+					<label class="col-sm-6 control-label">{LANG.setting_autologosize1}:</label>
+					<div class="col-sm-18">
 						<span class="text-middle pull-left"> {LANG.setting_autologowidth} &nbsp;</span>
 						<input type="text" class="form-control w50 pull-left" value="{DATA.autologosize1}" maxlength="2" name="autologosize1"><span class="text-middle">&nbsp; % ảnh </span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label">{LANG.setting_autologosize2}:</label>
-					<div class="col-sm-9">
+					<label class="col-sm-6 control-label">{LANG.setting_autologosize2}:</label>
+					<div class="col-sm-18">
 						<span class="text-middle pull-left"> {LANG.setting_autologowidth} &nbsp;</span>
 						<input type="text" class="form-control pull-left w50" value="{DATA.autologosize2}" maxlength="2" name="autologosize2"/><span class="text-middle pull-left">&nbsp; % ảnh </span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label">{LANG.setting_autologosize3}:</label>
-					<div class="col-sm-9">
+					<label class="col-sm-6 control-label">{LANG.setting_autologosize3}:</label>
+					<div class="col-sm-18">
 						<span class="text-middle pull-left"> {LANG.setting_autologosample}&nbsp;</span>
 						<input type="text" class="form-control pull-left w50" value="{DATA.autologosize3}" maxlength="2" name="autologosize3"/>&nbsp;<span class="text-middle pull-left">&nbsp; % ảnh </span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label">{LANG.setting_max_size_upload}:</label>
-					<div class="col-sm-9">
+					<label class="col-sm-6 control-label">{LANG.setting_max_size_upload}:</label>
+					<div class="col-sm-18">
 						<select class="form-control" name="maxupload">
 								<!-- BEGIN: size1 -->
 								<option value="{SIZE1.key}" {SIZE1.selected}>{SIZE1.title}</option>

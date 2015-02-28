@@ -13,9 +13,9 @@ if( ! defined( 'NV_IS_MOD_PHOTO' ) ) die( 'Stop!!!' );
 
 $cache_file = '';
 $contents = '';
-$viewcat = $global_photo_cat[$catalogs_id]['viewcat'];
+$viewcat = $global_photo_cat[$category_id]['viewcat'];
 
-$base_url_rewrite = NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $global_photo_cat[$catalogs_id]['alias'];
+$base_url_rewrite = NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $global_photo_cat[$category_id]['alias'];
 if( $page > 1 )
 {
 	$base_url_rewrite .= '/page-' . $page;
@@ -31,11 +31,11 @@ if( ! defined( 'NV_IS_MODADMIN' ) and $page < 5 )
 {
 	if( $set_view_page )
 	{
-		$cache_file = NV_LANG_DATA . '_' . $module_info['template'] . '_' . $op . '_' . $catalogs_id . '_page_' . $page . '_' . NV_CACHE_PREFIX . '.cache';
+		$cache_file = NV_LANG_DATA . '_' . $module_info['template'] . '_' . $op . '_' . $category_id . '_page_' . $page . '_' . NV_CACHE_PREFIX . '.cache';
 	}
 	else
 	{
-		$cache_file = NV_LANG_DATA . '_' . $module_info['template'] . '_' . $op . '_' . $catalogs_id . '_' . $page . '_' . NV_CACHE_PREFIX . '.cache';
+		$cache_file = NV_LANG_DATA . '_' . $module_info['template'] . '_' . $op . '_' . $category_id . '_' . $page . '_' . NV_CACHE_PREFIX . '.cache';
 	}
 	if( ( $cache = nv_get_cache( $module_name, $cache_file ) ) != false )
 	{
@@ -43,11 +43,11 @@ if( ! defined( 'NV_IS_MODADMIN' ) and $page < 5 )
 	}
 }
 
-$page_title = ( ! empty( $global_photo_cat[$catalogs_id]['meta_title'] ) ) ? $global_photo_cat[$catalogs_id]['meta_title'] : $global_photo_cat[$catalogs_id]['name'];
+$page_title = ( ! empty( $global_photo_cat[$category_id]['meta_title'] ) ) ? $global_photo_cat[$category_id]['meta_title'] : $global_photo_cat[$category_id]['name'];
 
-$key_words = $global_photo_cat[$catalogs_id]['meta_keyword'];
+$key_words = $global_photo_cat[$category_id]['meta_keyword'];
 
-$description = $global_photo_cat[$catalogs_id]['meta_description'];
+$description = $global_photo_cat[$category_id]['meta_description'];
 
 $per_page = $photo_config['per_page_album'];
 
@@ -55,21 +55,21 @@ if( empty( $contents ) )
 {
 	$array_catpage = array();
 
-	$base_url = $global_photo_cat[$catalogs_id]['link'];
+	$base_url = $global_photo_cat[$category_id]['link'];
 
 	if( $viewcat == 'viewcat_grid' )
 	{
 
-		$db->sqlreset()->select( 'COUNT(*)' )->from( TABLE_PHOTO_NAME . '_album a LEFT JOIN  ' . TABLE_PHOTO_NAME . '_rows r ON ( a.album_id = r.album_id )' )->where( 'a.status= 1 AND a.catalogs_id=' . $catalogs_id . ' AND r.defaults = 1' );
+		$db->sqlreset()->select( 'COUNT(*)' )->from( TABLE_PHOTO_NAME . '_album a LEFT JOIN  ' . TABLE_PHOTO_NAME . '_rows r ON ( a.album_id = r.album_id )' )->where( 'a.status= 1 AND a.category_id=' . $category_id . ' AND r.defaults = 1' );
 
 		$num_items = $db->query( $db->sql() )->fetchColumn();
 
-		$db->select( 'a.album_id, a.catalogs_id, a.name, a.alias, a.capturelocal, a.description, a.num_photo, a.date_added, r.file, r.thumb' )->order( 'a.date_added DESC' )->limit( $per_page )->offset( ( $page - 1 ) * $per_page );
+		$db->select( 'a.album_id, a.category_id, a.name, a.alias, a.capturelocal, a.description, a.num_photo, a.date_added, r.file, r.thumb' )->order( 'a.date_added DESC' )->limit( $per_page )->offset( ( $page - 1 ) * $per_page );
 		$result = $db->query( $db->sql() );
 		while( $item = $result->fetch() )
 		{
 
-			$item['link'] = $global_photo_cat[$catalogs_id]['link'] . '/' . $item['alias'] . '-' . $item['album_id'] . $global_config['rewrite_exturl'];
+			$item['link'] = $global_photo_cat[$category_id]['link'] . '/' . $item['alias'] . '-' . $item['album_id'] . $global_config['rewrite_exturl'];
 			$array_catpage[] = $item;
 		}
 

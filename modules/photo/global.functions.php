@@ -24,12 +24,12 @@ foreach( $list as $l )
 unset( $sql, $list );
 
 $global_photo_cat = array();
-$sql = 'SELECT * FROM ' . TABLE_PHOTO_NAME . '_catalogs ORDER BY sort_order ASC';
-$list = nv_db_cache( $sql, 'catalogs_id', $module_name );
+$sql = 'SELECT * FROM ' . TABLE_PHOTO_NAME . '_category ORDER BY sort_order ASC';
+$list = nv_db_cache( $sql, 'category_id', $module_name );
 foreach( $list as $l )
 {
-	$global_photo_cat[$l['catalogs_id']] = $l;
-	$global_photo_cat[$l['catalogs_id']]['link'] = NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $l['alias'];
+	$global_photo_cat[$l['category_id']] = $l;
+	$global_photo_cat[$l['category_id']]['link'] = NV_BASE_SITEURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&amp;' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $l['alias'];
 	
 }
 unset( $sql, $list );

@@ -127,7 +127,7 @@ function home_view_grid_by_cat( $array_cat )
  */
 function viewcat_grid( $array_catpage, $generate_page )
 {
-	global $global_config, $catalogs_id, $global_photo_cat, $client_info, $module_name, $module_file, $lang_module, $photo_config, $module_info, $op;
+	global $global_config, $category_id, $global_photo_cat, $client_info, $module_name, $module_file, $lang_module, $photo_config, $module_info, $op;
 
 	$xtpl = new XTemplate( 'viewcat_grid.tpl', NV_ROOTDIR . '/themes/' . $module_info['template'] . '/modules/' . $module_file );
 	$xtpl->assign( 'LANG', $lang_module );
@@ -135,7 +135,7 @@ function viewcat_grid( $array_catpage, $generate_page )
 	$xtpl->assign( 'TEMPLATE', $module_info['template'] );
 	$xtpl->assign( 'MODULE_FILE', $module_file );
 	$xtpl->assign( 'OP', $op );
-	$xtpl->assign( 'CATALOG', $global_photo_cat[$catalogs_id] );
+	$xtpl->assign( 'CATALOG', $global_photo_cat[$category_id] );
 	$xtpl->assign( 'SELFURL', $client_info['selfurl'] );
 	if( ! empty( $array_catpage ) )
 	{
@@ -169,9 +169,9 @@ function viewcat_grid( $array_catpage, $generate_page )
  * @param mixed $album
  * @return
  */
-function detail_album( $album, $array_photo, $other_catalogs_album )
+function detail_album( $album, $array_photo, $other_category_album )
 {
-	global $global_config, $catalogs_id, $client_info, $global_photo_cat, $module_name, $module_file, $lang_module, $photo_config, $module_info, $op;
+	global $global_config, $category_id, $client_info, $global_photo_cat, $module_name, $module_file, $lang_module, $photo_config, $module_info, $op;
 
 	$xtpl = new XTemplate( 'detail_album.tpl', NV_ROOTDIR . '/themes/' . $module_info['template'] . '/modules/' . $module_file );
 	$xtpl->assign( 'LANG', $lang_module );
@@ -179,7 +179,7 @@ function detail_album( $album, $array_photo, $other_catalogs_album )
 	$xtpl->assign( 'TEMPLATE', $module_info['template'] );
 	$xtpl->assign( 'MODULE_FILE', $module_file );
 	$xtpl->assign( 'OP', $op );
-	$xtpl->assign( 'CATALOG', $global_photo_cat[$catalogs_id] );
+	$xtpl->assign( 'CATALOG', $global_photo_cat[$category_id] );
 	$xtpl->assign( 'SELFURL', $client_info['selfurl'] );
 	
 	if( ! empty( $album ) )
@@ -216,10 +216,10 @@ function detail_album( $album, $array_photo, $other_catalogs_album )
 		}
   
 	}
-	if( !empty( $other_catalogs_album ) )
+	if( !empty( $other_category_album ) )
 	{
 		$key = 1;
-		foreach( $other_catalogs_album as $other )
+		foreach( $other_category_album as $other )
 		{
 			$other['description'] = strip_tags( nv_clean60( $other['description'], 100 ) );
 			$other['datePublished'] = date( 'Y-m-d', $other['date_added'] );

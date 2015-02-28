@@ -67,7 +67,7 @@ else
 	{
 		
 		$db->sqlreset()
-			->select( 'album_id, catalogs_id, name, alias, meta_title' )
+			->select( 'album_id, category_id, name, alias, meta_title' )
 			->from( NV_PREFIXLANG . '_' . $module_data . '_album' )
 			->where( 'status=1' )
 			->order( 'date_added ASC' )
@@ -76,7 +76,7 @@ else
 		
 		while( $album = $albums->fetch() )
 		{
-			$album['link'] = NV_MAIN_DOMAIN . nv_url_rewrite( $global_photo_cat[$album['catalogs_id']]['link'] . '/' . $album['alias'] . '-' . $album['album_id'] . $global_config['rewrite_exturl'], true );
+			$album['link'] = NV_MAIN_DOMAIN . nv_url_rewrite( $global_photo_cat[$album['category_id']]['link'] . '/' . $album['alias'] . '-' . $album['album_id'] . $global_config['rewrite_exturl'], true );
  
 			$album['photo'] = array();
 			$db->sqlreset()

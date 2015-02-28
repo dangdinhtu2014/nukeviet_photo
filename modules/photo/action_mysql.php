@@ -13,7 +13,7 @@ if( ! defined( 'NV_IS_FILE_MODULES' ) ) die( 'Stop!!!' );
 
 $sql_drop_module = array();
 
-$sql_drop_module[] = "DROP TABLE IF EXISTS " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_catalogs";
+$sql_drop_module[] = "DROP TABLE IF EXISTS " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_category";
 $sql_drop_module[] = "DROP TABLE IF EXISTS " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_setting";
 $sql_drop_module[] = "DROP TABLE IF EXISTS " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_album";
 $sql_drop_module[] = "DROP TABLE IF EXISTS " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_rows";
@@ -24,7 +24,7 @@ $sql_create_module = $sql_drop_module;
 
 $sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_album (
 	album_id mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-	catalogs_id mediumint(8) unsigned NOT NULL default '0',
+	category_id mediumint(8) unsigned NOT NULL default '0',
 	name varchar(255) NOT NULL default '',
 	alias varchar(255) NOT NULL default '',
 	description mediumtext NOT NULL,
@@ -48,12 +48,12 @@ $sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_
 	date_added int(11) unsigned NOT NULL default '0',
 	date_modified int(11) unsigned NOT NULL default '0',
 	PRIMARY KEY (album_id),
-	KEY catalogs_id (catalogs_id),
+	KEY category_id (category_id),
 	KEY alias (alias)
 ) ENGINE=MyISAM";	
 
-$sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_catalogs (
-	catalogs_id smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+$sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_category (
+	category_id smallint(5) unsigned NOT NULL AUTO_INCREMENT,
 	parent_id smallint(5) unsigned NOT NULL default '0',
 	name varchar(255) NOT NULL,
 	alias varchar(255) NOT NULL default '',
@@ -75,7 +75,7 @@ $sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_
 	groups_view varchar(255) default '',
 	date_added int(11) unsigned NOT NULL default '0',
 	date_modified int(11) unsigned NOT NULL default '0',
-	PRIMARY KEY (catalogs_id),
+	PRIMARY KEY (category_id),
 	UNIQUE KEY alias (alias),
 	KEY parent_id (parent_id)
 ) ENGINE=MyISAM";

@@ -20,21 +20,21 @@ if( $photo_config['home_view'] == 'home_view_grid_by_cat' )
 	if( ! empty( $global_photo_cat ) )
 	{ 
 		$key = 0;
-		foreach( $global_photo_cat as $_catalogs_id => $catalogs  )
+		foreach( $global_photo_cat as $_category_id => $category  )
 		{
-			if( $catalogs['parent_id'] == 0 and $catalogs['inhome'] == 1 )
+			if( $category['parent_id'] == 0 and $category['inhome'] == 1 )
 			{
-				$array_cat[$key] = $catalogs;
-				$sql = 'SELECT a.album_id, a.catalogs_id, a.name, a.alias, a.capturelocal, a.description, a.num_photo, a.date_added, r.file, r.thumb FROM ' . TABLE_PHOTO_NAME . '_album a 
+				$array_cat[$key] = $category;
+				$sql = 'SELECT a.album_id, a.category_id, a.name, a.alias, a.capturelocal, a.description, a.num_photo, a.date_added, r.file, r.thumb FROM ' . TABLE_PHOTO_NAME . '_album a 
 						LEFT JOIN  ' . TABLE_PHOTO_NAME . '_rows r ON ( a.album_id = r.album_id )
-						WHERE a.status= 1 AND a.catalogs_id=' . $_catalogs_id . ' AND r.defaults = 1 
+						WHERE a.status= 1 AND a.category_id=' . $_category_id . ' AND r.defaults = 1 
 						ORDER BY a.date_added DESC 
-						LIMIT 0 , ' . $catalogs['numlinks'];
+						LIMIT 0 , ' . $category['numlinks'];
 				$result = $db->query( $sql );
 
 				while( $item = $result->fetch() )
 				{
-					$item['link'] = $global_photo_cat[$_catalogs_id]['link'] . '/' . $item['alias'] . '-' . $item['album_id'] . $global_config['rewrite_exturl'];
+					$item['link'] = $global_photo_cat[$_category_id]['link'] . '/' . $item['alias'] . '-' . $item['album_id'] . $global_config['rewrite_exturl'];
 			
 					$array_cat[$key]['content'][] = $item;
 				}

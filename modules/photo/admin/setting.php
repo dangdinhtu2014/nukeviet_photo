@@ -50,7 +50,7 @@ if( ! empty( $savesetting ) )
 	$sth->closeCursor();
 
 	nv_del_moduleCache( $module_name );
-	
+	$nv_Request->set_Session( $module_data . '_success', $lang_module['setting_update_success'] );
 	Header( 'Location: ' . NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=' . $op . '&rand=' . nv_genpass() );
 	die();
 }
@@ -61,7 +61,7 @@ $module_logo = ( ! nv_is_url( $module_logo ) && !empty( $photo_config['module_lo
 
 $photo_config['active_logo'] = ( $photo_config['active_logo'] == 1 ) ? 'checked="checked"': '';
 
-$xtpl = new XTemplate( 'settings.tpl', NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/modules/' . $module_file );
+$xtpl = new XTemplate( 'setting.tpl', NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/modules/' . $module_file );
 $xtpl->assign( 'LANG', $lang_module );
 $xtpl->assign( 'GLANG', $lang_global );
 $xtpl->assign( 'NV_BASE_SITEURL', NV_BASE_SITEURL );
@@ -77,7 +77,15 @@ $xtpl->assign( 'PATH', defined( 'NV_IS_SPADMIN' ) ? '' : NV_UPLOADS_DIR . '/' . 
 $xtpl->assign( 'CURRENTPATH', defined( 'NV_IS_SPADMIN' ) ? 'images' : NV_UPLOADS_DIR . '/' . $module_name );
 $xtpl->assign( 'CANCEL', NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&' . NV_NAME_VARIABLE . '=' . $module_name );
 
+if( $nv_Request->get_string( $module_data . '_success', 'session' ) )
+{
+	$xtpl->assign( 'SUCCESS', $nv_Request->get_string( $module_data . '_success', 'session' ) );
 
+	$xtpl->parse( 'main.success' );
+
+	$nv_Request->unset_request( $module_data . '_success', 'session' );
+
+} 
 
 
 foreach( $array_home_view as $key => $title )

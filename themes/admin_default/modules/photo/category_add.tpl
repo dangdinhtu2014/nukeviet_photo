@@ -17,23 +17,23 @@
 			<div style="clear:both"></div>
 		</div>
 		<div class="panel-body">
-			<form action="" method="post"  enctype="multipart/form-data" id="form-catalogs" class="form-horizontal">
-				<input type="hidden" name ="catalogs_id" value="{DATA.catalogs_id}" />
+			<form action="" method="post"  enctype="multipart/form-data" id="form-category" class="form-horizontal">
+				<input type="hidden" name ="category_id" value="{DATA.category_id}" />
 				<input type="hidden" name ="parentid_old" value="{DATA.parent_id}" />
 				<input name="save" type="hidden" value="1" />
  
 				<div class="form-group required">
-					<label class="col-sm-2 control-label" for="input-name">{LANG.catalogs_name}</label>
-					<div class="col-sm-10">
-						<input type="text" name="name" value="{DATA.name}" placeholder="{LANG.catalogs_name}" id="input-name" class="form-control" />
+					<label class="col-sm-4 control-label" for="input-name">{LANG.category_name}</label>
+					<div class="col-sm-20">
+						<input type="text" name="name" value="{DATA.name}" placeholder="{LANG.category_name}" id="input-name" class="form-control" />
 						<!-- BEGIN: error_name --><div class="text-danger">{error_name}</div><!-- END: error_name -->
 					</div>
 				</div>
 				<div class="form-group required">
-                    <label class="col-sm-2 control-label" for="input-alias">{LANG.catalogs_alias}</label>
-                    <div class="col-sm-10">
+                    <label class="col-sm-4 control-label" for="input-alias">{LANG.category_alias}</label>
+                    <div class="col-sm-20">
 						<div class="input-group">
-							<input class="form-control" name="alias" placeholder="{LANG.catalogs_alias}"  type="text" value="{DATA.alias}" maxlength="255" id="input-alias"/>
+							<input class="form-control" name="alias" placeholder="{LANG.category_alias}"  type="text" value="{DATA.alias}" maxlength="255" id="input-alias"/>
 							<div class="input-group-addon fixaddon">
 								&nbsp;<em class="fa fa-refresh fa-lg fa-pointer text-middle" onclick="get_alias( );">&nbsp;</em>
 							</div>
@@ -41,8 +41,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label" for="input-parent">{LANG.catalogs_sub_sl}</label>
-					<div class="col-sm-10">
+					<label class="col-sm-4 control-label" for="input-parent">{LANG.category_sub_sl}</label>
+					<div class="col-sm-20">
 						<select class="form-control" name="parent_id">
 							<!-- BEGIN: parent_loop -->
 							<option value="{pcatid_i}" {pselect}>{ptitle_i}</option>
@@ -52,35 +52,35 @@
 				</div>
 				
                 <div class="form-group">
-                     <label class="col-sm-2 control-label" for="input-description">{LANG.catalogs_description} </label>
-                     <div class="col-sm-10">
-                          <textarea name="description" rows="2" placeholder="{LANG.catalogs_description}" id="input-description" class="form-control">{DATA.description}</textarea>
+                     <label class="col-sm-4 control-label" for="input-description">{LANG.category_description} </label>
+                     <div class="col-sm-20">
+                          <textarea name="description" rows="2" placeholder="{LANG.category_description}" id="input-description" class="form-control">{DATA.description}</textarea>
 						  <!-- <span class="text-middle"> {GLANG.length_characters}: <span id="descriptionlength" class="red">0</span>. {GLANG.description_suggest_max} </span> -->            
                       </div>
                  </div>
                  <div class="form-group required">
-						<label class="col-sm-2 control-label" for="input-meta-title">{LANG.catalogs_meta_title}</label>
-						<div class="col-sm-10">
-							<input type="text" name="meta_title" value="{DATA.meta_title}" placeholder="{LANG.catalogs_meta_title}" id="input-meta-title" class="form-control" />
+						<label class="col-sm-4 control-label" for="input-meta-title">{LANG.category_meta_title}</label>
+						<div class="col-sm-20">
+							<input type="text" name="meta_title" value="{DATA.meta_title}" placeholder="{LANG.category_meta_title}" id="input-meta-title" class="form-control" />
 							<!-- BEGIN: error_meta_title--><div class="text-danger">{error_meta_title}</div><!-- END: error_meta_title -->
 						</div>
                  </div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label" for="input-meta-description">{LANG.catalogs_meta_description}</label>
-					<div class="col-sm-10">
-						<textarea name="meta_description" rows="2" placeholder="{LANG.catalogs_meta_description}" id="input-meta-description" class="form-control">{DATA.meta_description}</textarea>
+					<label class="col-sm-4 control-label" for="input-meta-description">{LANG.category_meta_description}</label>
+					<div class="col-sm-20">
+						<textarea name="meta_description" rows="2" placeholder="{LANG.category_meta_description}" id="input-meta-description" class="form-control">{DATA.meta_description}</textarea>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label" for="input-meta-keyword">{LANG.catalogs_meta_keyword}</label>
-					<div class="col-sm-10">
-						<textarea name="meta_keyword" rows="2" placeholder="{LANG.catalogs_meta_keyword}" id="input-meta-keyword" class="form-control">{DATA.meta_keyword}</textarea>
+					<label class="col-sm-4 control-label" for="input-meta-keyword">{LANG.category_meta_keyword}</label>
+					<div class="col-sm-20">
+						<textarea name="meta_keyword" rows="2" placeholder="{LANG.category_meta_keyword}" id="input-meta-keyword" class="form-control">{DATA.meta_keyword}</textarea>
 					</div>
 				</div>
     
 				<div class="form-group">
-					<label class="col-sm-2 control-label" for="input-parent">{LANG.catalogs_layout}</label>
-					<div class="col-sm-10">
+					<label class="col-sm-4 control-label" for="input-parent">{LANG.category_layout}</label>
+					<div class="col-sm-20">
 						<select class="form-control" name="layout">
 							<option value="">{LANG.defaults}</option>
 							<!-- BEGIN: layout -->
@@ -90,8 +90,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label" for="input-keyword"> {GLANG.groups_view}</label>
-					<div class="col-sm-10">
+					<label class="col-sm-4 control-label" for="input-keyword"> {GLANG.groups_view}</label>
+					<div class="col-sm-20">
 						<!-- BEGIN: groups_view -->
 						 
 						<label><input name="groups_view[]" type="checkbox" value="{GROUPS_VIEW.value}" {GROUPS_VIEW.checked} />{GROUPS_VIEW.title}</label>
@@ -100,8 +100,8 @@
 					</div>
 				</div>	 
                 <div class="form-group">
-                     <label class="col-sm-2 control-label" for="input-inhome">{LANG.catalogs_show_inhome}</label>
-                     <div class="col-sm-10">
+                     <label class="col-sm-4 control-label" for="input-inhome">{LANG.category_show_inhome}</label>
+                     <div class="col-sm-20">
 						<select name="inhome" id="input-inhome" class="form-control">
 							<!-- BEGIN: inhome -->
                             <option value="{INHOME.key}" {INHOME.selected}>{INHOME.name}</option>
@@ -111,8 +111,8 @@
 				</div>
                         	 
 				<div class="form-group">
-					<label class="col-sm-2 control-label" for="input-status">{LANG.catalogs_show_status}</label>
-					<div class="col-sm-10">
+					<label class="col-sm-4 control-label" for="input-status">{LANG.category_show_status}</label>
+					<div class="col-sm-20">
 						<select name="status" id="input-status" class="form-control">
 							<!-- BEGIN: status -->
 							<option value="{STATUS.key}" {STATUS.selected}>{STATUS.name}</option>
@@ -131,11 +131,17 @@
 	</div>
 </div>
 <script type="text/javascript" src="{NV_BASE_SITEURL}modules/{MODULE_FILE}/js/footer.js"></script>
+<script type="text/javascript">
+$('button[type=\'submit\']').on('click', function() {
+	$("form[id*='form-']").submit();
+});
+
+</script>
 <!-- BEGIN: getalias -->
 <script type="text/javascript">
 //<![CDATA[
 $("#input-name").change(function() {
-	get_alias('catalogs', {DATA.catalogs_id});
+	get_alias('category', {DATA.category_id});
 });
 //]]>
 </script>
