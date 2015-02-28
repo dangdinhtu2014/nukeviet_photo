@@ -2,10 +2,11 @@
 
 /**
  * @Project NUKEVIET 4.x
- * @Author VINADES.,JSC (contact@vinades.vn)
- * @Copyright (C) 2014 VINADES.,JSC. All rights reserved
+ * @Author DANGDINHTU (dlinhvan@gmail.com)
+ * @Copyright (C) 2013 Webdep24.com. All rights reserved
+ * @Blog  http://dangdinhtu.com
  * @License GNU/GPL version 2 or any later version
- * @Createdate Mon, 22 Jul 2013 21:41:59 GMT
+ * @Createdate  Wed, 21 Jan 2015 14:00:59 GMT
  */
   
 

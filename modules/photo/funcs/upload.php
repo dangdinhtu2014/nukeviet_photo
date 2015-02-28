@@ -2,10 +2,11 @@
 
 /**
  * @Project NUKEVIET 4.x
- * @Author ĐẶNG ĐÌNH TỨ (dlinhvan@gmail.com)
- * @Copyright (C) 2010 webdep24.com All rights reserved
+ * @Author DANGDINHTU (dlinhvan@gmail.com)
+ * @Copyright (C) 2013 Webdep24.com. All rights reserved
+ * @Blog  http://dangdinhtu.com
  * @License GNU/GPL version 2 or any later version
- * @Createdate 29/08/2014 17:00
+ * @Createdate  Wed, 21 Jan 2015 14:00:59 GMT
  */
 
 if( ! defined( 'NV_MAINFILE' ) ) die( 'Stop!!!' );
