@@ -35,7 +35,7 @@ if( $photo_config['home_view'] == 'home_view_grid_by_cat' )
 				while( $item = $result->fetch() )
 				{
 					$item['link'] = $global_photo_cat[$_category_id]['link'] . '/' . $item['alias'] . '-' . $item['album_id'] . $global_config['rewrite_exturl'];
-			
+					
 					$array_cat[$key]['content'][] = $item;
 				}
 				$result->closeCursor();
