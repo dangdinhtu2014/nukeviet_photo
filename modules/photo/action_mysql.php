@@ -125,7 +125,7 @@ $sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_
 
 $sql_create_module[] = "INSERT INTO " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_setting VALUES
 ('home_view', 'home_view_grid'),
-('album_view_slider', 'album_view_grid'),
+('album_view', 'album_view_grid'),
 ('per_page_album', '30'),
 ('per_page_photo', '30'),
 ('structure_upload', 'Y_m'),
