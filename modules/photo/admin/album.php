@@ -714,7 +714,7 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 									}
 		 
 									$folder_album = NV_ROOTDIR . '/' . $currentpath . '/'. $data['folder'];
-									var_dump($folder_album);
+ 
 									if( is_dir( $folder_album ) )
 									{
 										// Copy file anh goc
@@ -910,9 +910,9 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 		
 		if( empty( $error ) )
 		{
-			// nv_del_moduleCache( $module_name );
-			// Header( 'Location: ' . NV_BASE_ADMINURL . 'index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=album' );
-			// die();
+			nv_del_moduleCache( $module_name );
+			Header( 'Location: ' . NV_BASE_ADMINURL . 'index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=album' );
+			die();
 		}
 
 	}
