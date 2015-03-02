@@ -12,7 +12,7 @@
 if( ! defined( 'NV_IS_FILE_ADMIN' ) ) die( 'Stop!!!' );
 
 $name = $nv_Request->get_title( 'name', 'post', '' );
-$alias = change_alias( $name );
+$alias = strtolower( change_alias( $name ) );
 
 $id = $nv_Request->get_int( 'id', 'post', 0 );
 $mod = $nv_Request->get_string( 'mod', 'post', '' );

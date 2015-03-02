@@ -333,7 +333,7 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
  		$data['name'] = nv_substr( $nv_Request->get_title( 'name', 'post', '', '' ), 0, 255 );
 		$data['alias'] = nv_substr( $nv_Request->get_title( 'alias', 'post', '', '' ), 0, 255 );
 		$data['folder'] = nv_substr( $nv_Request->get_title( 'folder', 'post', '', '' ), 0, 255 );
-		$data['folder'] = change_alias( $data['folder'] );
+		$data['folder'] = strtolower(change_alias( $data['folder'] ) );
 		$data['category_id'] = $nv_Request->get_int( 'category_id', 'post', 0 );
  		$data['description'] = $nv_Request->get_textarea( 'description', 'post', '', 'br', 1 );
 		$data['meta_title'] = nv_substr( $nv_Request->get_title( 'meta_title', 'post', '', '' ), 0, 255 );
@@ -714,6 +714,7 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 									}
 		 
 									$folder_album = NV_ROOTDIR . '/' . $currentpath . '/'. $data['folder'];
+									var_dump($folder_album);
 									if( is_dir( $folder_album ) )
 									{
 										// Copy file anh goc
@@ -909,9 +910,9 @@ if( ACTION_METHOD == 'add' || ACTION_METHOD == 'edit' )
 		
 		if( empty( $error ) )
 		{
-			nv_del_moduleCache( $module_name );
-			Header( 'Location: ' . NV_BASE_ADMINURL . 'index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=album' );
-			die();
+			// nv_del_moduleCache( $module_name );
+			// Header( 'Location: ' . NV_BASE_ADMINURL . 'index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=album' );
+			// die();
 		}
 
 	}
